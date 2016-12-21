@@ -1,0 +1,75 @@
+<hi>Search by type</hi><br>
+
+<!-- <option <%= "selected" if @current_day == 1 %> value="1">1</option> -->
+<form action="/MCB/search" method="post" >
+<% if @search[:food_checkbox] == "true" %>
+<label>Food:<input checked type="checkbox" name="food_checkbox" value="true" ></label>
+<% else %>
+<label>Food:<input type="checkbox" name="food_checkbox" value="true" ></label>
+<% end %>
+
+
+<% if @search[:entertainment_checkbox] == "true" %>
+<label>Entertainment:<input checked type="checkbox" name="entertainment_checkbox" value="true"></label>
+<% else %>
+<label>Entertainment:<input type="checkbox" name="entertainment_checkbox" value="true"></label>
+<% end %>
+
+
+<% if @search[:utilites_checkbox] == "true" %>
+<label>Utilites:<input checked type="checkbox" name="utilites_checkbox" value="true"></label>
+<% else %>
+<label>Utilites:<input type="checkbox" name="utilites_checkbox" value="true"></label>
+<% end %>
+
+
+<% if @search[:contracts_checkbox] == "true" %>
+<label>Contracts:<input checked type="checkbox" name="contracts_checkbox" value="true"></label>
+<% else %>
+<label>Contracts:<input type="checkbox" name="contracts_checkbox" value="true"></label>
+<% end %>
+
+
+<input type="submit" value="search"/>
+<br>
+</form>
+<%  %>
+<% for transaction in @transactions %>
+  <% if @search[:food_checkbox] == "true" && transaction.category == "Food"%>
+    <p>Name: <%= transaction.merchant_name()%></p>
+    <p>Category: <%= transaction.category()%> </p>
+    <p>Value: £<%= "%.2f" % transaction.value() %></p>
+    <p><a href="/MCB/<%= transaction.id %>" >Show Transaction</a></p>
+    <hr>
+
+
+  <% end %>
+  <% if @search[:entertainment_checkbox] == "true" && transaction.category == "Entertainment"%>
+    <p>Name: <%= transaction.merchant_name()%></p>
+    <p>Category: <%= transaction.category()%> </p>
+    <p>Value: £<%= "%.2f" % transaction.value() %></p>
+    <p><a href="/MCB/<%= transaction.id %>" >Show Transaction</a></p>
+    <hr>
+
+
+  <% end %>
+  <% if @search[:utilites_checkbox] == "true" && transaction.category == "Utilites"%>
+    <p>Name: <%= transaction.merchant_name()%></p>
+    <p>Category: <%= transaction.category()%> </p>
+    <p>Value: £<%= "%.2f" % transaction.value() %></p>
+    <p><a href="/MCB/<%= transaction.id %>" >Show Transaction</a></p>
+    <hr>
+
+
+  <% end %>
+  <% if @search[:contracts_checkbox] == "true" && transaction.category == "Contracts"%>
+    <p>Name: <%= transaction.merchant_name()%></p>
+    <p>Category: <%= transaction.category()%> </p>
+    <p>Value: £<%= "%.2f" % transaction.value() %></p>
+    <p><a href="/MCB/<%= transaction.id %>" >Show Transaction</a></p>
+    <hr>
+
+
+  <% end %>
+<% end %>
+

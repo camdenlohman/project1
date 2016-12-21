@@ -1,0 +1,191 @@
+<hi>Transactions</hi>
+<p><a href="/MCB/new">New Transaction</a></p>
+<% for transaction in @transactions%>
+  <% if transaction.category == "Food" %>
+    <% @F_Total += transaction.value.to_f %>
+  <% end %>
+<% end %>
+<% for transaction in @transactions%>
+  <% if transaction.category == "Entertainment" %>
+    <% @E_Total += transaction.value.to_f %>
+  <% end %>
+<% end %>
+<% for transaction in @transactions%>
+  <% if transaction.category == "Utilites" %>
+    <% @U_Total += transaction.value.to_f %>
+  <% end %>
+<% end %>
+<% for transaction in @transactions%>
+  <% if transaction.category == "Contracts" %>
+    <% @C_Total += transaction.value.to_f %>
+  <% end %>
+<% end %>
+
+<% @All_total = @F_Total + @E_Total + @U_Total + @C_Total %>
+<% @percentage = (@All_total / @Budget) * 100 %>
+<!-- <p> -->
+<label> Total of all: £<%= "%.2f" % @All_total %> </label>
+
+<!-- PUT THE DOUBLE BAR THING HERE, USE DIV BOXES -->
+<div style="background-color: white; width: 50%;"> 
+  <div style="width :<%= @percentage %>%; <% if @percentage >= 100 %>background-color: lightgrey; <%end%><% if @percentage >= 80 && @percentage < 100%>background-color: red; <%end%><% if @percentage >= 50 && @percentage < 80%>background-color: yellow; <%end%><% if @percentage >= 0 && @percentage < 50%>background-color: green; <%end%>">
+  <label><%= "%.2f" % @percentage %>% of budget</label>
+  </div>
+</div>
+
+<div class="total-box-all">
+
+  <div class="total-box">
+    <p>
+      <label>Food Total</label>
+    </p>
+    <p>
+      <label>£<%= "%.2f" % @F_Total %></label>
+    </p>
+    <hr>
+  </div>
+
+  <div class="total-box">
+    <p>
+      <label>Entertainment Total</label>
+    </p>
+    <p>
+      <label>£<%= "%.2f" % @E_Total %></label>
+    </p>
+    <hr>
+  </div>
+
+  <div class="total-box">
+    <p>
+      <label>Utilites Total</label>
+    </p>
+    <p>
+      <label>£<%= "%.2f" % @U_Total %></label>
+    </p>
+    <hr>
+  </div>
+
+  <div class="total-box">
+    <p>
+      <label>Contracts Total</label>
+    </p>
+    <p>
+      <label>£<%= "%.2f" % @C_Total %></label>
+    </p>
+    <hr>
+  </div>
+
+</div>
+
+<div class="all-transactions-lists">
+  <div class="transaction-list">
+    <!-- make food list -->
+    <% for transaction in @transactions%>
+    <% if transaction.category == "Food" %>
+    <div class="transaction-box">
+      <p>
+        <div class="transaction-company">Company: <%= transaction.merchant_name()%> 
+        </div>
+        <div class="transaction-value">Value: £<%= "%.2f" % transaction.value()%>
+        </div>
+      </p>
+
+      <p>
+        <div class="transaction-date">Date: <%= transaction.t_date() %>    
+        </div>
+        <div class="transaction-category">Category: <%= transaction.category() %>
+        </div>
+        <div class="transaction-show-link">
+          <a href="/MCB/<%= transaction.id %>" >Show Transaction</a>
+          <hr>
+        </div>
+      </p>
+    </div>
+    <% end %>
+    <% end %>
+  </div>
+
+
+  <div class="transaction-list">
+    <!-- make entertainment list -->
+    <% for transaction in @transactions%>
+    <% if transaction.category == "Entertainment" %>
+    <div class="transaction-box">
+      <!-- <div style="position: relative; left: 410px; width: 25%; height: 80px; display: inline;"> -->
+      <p>
+        <div class="transaction-company">Company: <%= transaction.merchant_name()%> 
+        </div>
+        <div class="transaction-value">Value: £<%= "%.2f" % transaction.value()%>
+        </div>
+      </p>
+
+      <p>
+        <div class="transaction-date">Date: <%= transaction.t_date() %>   </div>
+        <div class="transaction-category">Category: <%= transaction.category() %>
+        </div>
+        <div class="transaction-show-link">
+          <a href="/MCB/<%= transaction.id %>" >Show Transaction</a>
+          <hr>
+        </div>
+      </p>
+    </div>
+    <% end %>
+    <% end %>
+  </div>
+
+  <div class="transaction-list">
+    <!-- make utilites list -->
+    <% for transaction in @transactions%>
+    <% if transaction.category == "Utilites" %>
+    <div class="transaction-box">
+      <!-- <div style="position: relative; top: 0px; left: 810px; width: 25%; height: 80px; display: inline;"> -->
+      <p>
+        <div class="transaction-company">Company: <%= transaction.merchant_name()%> 
+        </div>
+        <div class="transaction-value">Value: £<%= "%.2f" % transaction.value()%>
+        </div>
+      </p>
+
+      <p>
+        <div class="transaction-date">Date: <%= transaction.t_date() %>    
+        </div>
+        <div class="transaction-category">Category: <%= transaction.category() %>
+        </div>
+        <div class="transaction-show-link">
+          <a href="/MCB/<%= transaction.id %>" >Show Transaction</a>
+          <hr>
+        </div>
+      </p>
+    </div>
+    <% end %>
+    <% end %>
+  </div>
+
+  <div class="transaction-list">
+    <!-- make contracts list -->
+    <% for transaction in @transactions%>
+    <% if transaction.category == "Contracts" %>
+    <div class="transaction-box">
+      <!-- <div style="position: relative; top: 0px;  left: 2110px; width: 25%; height: 80px; display: inline;"> -->
+      <p>
+        <div class="transaction-company">Company: <%= transaction.merchant_name()%> 
+        </div>
+        <div class="transaction-value">Value: £<%= "%.2f" % transaction.value()%>
+        </div>
+      </p>
+      <p>
+        <div class="transaction-date">Date: <%= transaction.t_date() %>    
+        </div>
+        <div class="transaction-category">Category: <%= transaction.category() %>
+        </div>
+        <div class="transaction-show-link">
+          <a href="/MCB/<%= transaction.id %>" >Show Transaction</a>
+          <hr>
+        </div>
+      </p>
+    </div>
+    <% end %>
+    <% end %>
+  </div>
+</div>
+<!-- </p> -->

@@ -1,0 +1,68 @@
+body {
+
+  background: url(/images/bg1.jpg);
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+color: rgb(0,0,0);
+font-size: 24px;
+
+}
+
+div.all-transactions-lists {
+/*  position: relative;
+  top: 0px;*/
+}
+
+div.transaction-list {
+  display: inline-block;
+  width: 22%;
+  float: left; /* this makes the lists line up a the top rather than the bottom */
+/*  position: absolute;
+  top: 0px;*/
+
+  /*position: relative; top: 0px;*/
+}
+
+div.transaction-box {
+  display: block;
+  /*width: 25%;*/
+}
+
+div.total-bar {
+  width: 50%;
+}
+
+div.total-box-all {
+/*  position: relative;
+  top: 0px;*/
+}
+div.total-box {
+  display: inline-block;
+  width: 22%;
+  float: left; /* this makes the lists line up a the top rather than the bottom */
+/*  position: absolute;
+  top: 0px;*/
+
+  /*position: relative; top: 0px;*/
+}
+
+div.transaction-company {
+
+  /*top: 0%;*/
+}
+
+div.transaction-value {
+
+  /*position: relative; top: -25px; left: 50%;*/
+}
+
+div.transaction-date {
+
+  /*position: relative; top: -50px;*/
+}
+
+div.transaction-category {
+
+  /*position: relative; top: -80px; left: 50%;*/
+}

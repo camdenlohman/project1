@@ -1,0 +1,10 @@
+<p>merchant_name: <%= @transaction.merchant_name()%></p>
+<p>category: <%= @transaction.category()%></p>
+<p>value: £<%= "%.2f" % @transaction.value()%></p>
+<p>t_date: <%= @transaction.t_date()%></p>
+
+<a href="/MCB/<%= @transaction.id %>/edit">Edit Transaction</a>
+
+<form action="/MCB/<%= @transaction.id %>/delete" method="post">
+<input type="submit" value="Delete"/>
+</form>
